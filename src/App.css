@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;  /* asi se reinician los estilos y a partir de ahi uno diseña con los valores reseteados */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    background-color: #141414;
+    font-family: 'Open Sans', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 95%;
+    margin: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.contenedor a {
+    text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
-}
+/* Media querys */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media screen and (max-width: 800px) {
+    .header {
+        height: 31vh !important;
+    }
+
+	header .contenedor {
+        height: 26vh !important;
+		flex-direction: column;
+		text-align: center;
+	}
+
+    .buscador {
+        width: auto;
+    }
+
+    .buscador input{
+        width: 70vw;
+    }
+
+    .nav-bar{
+        width: auto;
+    }
+
+    .listaNav{
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .header nav a{
+        margin-right: 15px;
+    }
+
+    .footer{
+        flex-direction: column;
+		text-align: center;
+    }
+
+    .conocenos {
+        margin-left: 0px;
+        margin-bottom: 25px;
+        margin-top: 10px;
+    }
+
+    .titleSection{
+        text-align: center;
+    }
+
 }

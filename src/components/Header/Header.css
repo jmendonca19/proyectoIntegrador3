@@ -1,0 +1,141 @@
+    /************************* Logo *********************************/
+
+.logotipo {
+    font-family: 'Permanent Marker', cursive;
+    font-weight: normal; /* Se tuvo que aplicar ya que sino estaba muy en negrita y se veia mal */
+    color: rgb(7, 17, 161);
+    font-size: 40px;
+}
+
+    /************************* Nav *********************************/
+
+.nav-bar{
+    width: 35%;
+}
+
+.nav-bar a {
+    color: #aaa;
+}
+
+.nav-bar a:hover { /* la propiedad :hover sirve para ejecutar una accion cuando el cursor esta sobre el elemento */
+    color: #fff;
+}
+
+.listaNav {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+    /************************* Buscador *********************************/
+
+.buscador{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    flex-direction: column;
+}
+
+.buscador input{
+    width: 40vw; /* vw es una medida relativa que hace que se adapte al ancho de la pantalla */
+    margin:10px;
+    padding:10px 16px;
+    border-radius:32px;
+    border: 2px solid #fff;
+}
+
+.buscador input:hover {
+    border:2px solid #c50f0f;
+}
+
+.buscador button {
+    background-color: #fff;
+    width: 40px; /* aqui quiero px porque quiero que sea estatico el ancho del icon */
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 90px;
+}
+
+.buscador button:hover {
+    border:2px solid #c50f0f;
+}
+
+.mensaje {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+  /************************* Main *********************************/
+
+.banner{
+    min-height: 400px; /* altura minima, con px porque es estatico */
+    background-size: cover;
+    background-position: center center; /* el primer 'center' refiere al eje horizontal y el segundo al vertical */
+    margin-bottom: 30px;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/************************* Peliculas Recomendadas *********************************/
+
+.titleSection {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Permanent Marker', cursive;
+    margin-bottom: 25px;
+    color: #5f84f2;
+}
+
+.peliculas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card{
+    width: 210px;
+    margin-bottom: 30px;
+    background-color: blanchedalmond;
+    text-align: center;
+    padding: 5px;
+    box-shadow: 3px 3px 10px 2px rgb(103 102 202);
+    transition: 0.5s; /* cuando se le hace hover la transicion dura 0,5 segundos */
+}
+
+.linkGenero{
+    text-decoration: none;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* cuando el cursor pasa por encima, la card se va para arriba 10px */
+    background-color: rgb(10, 1, 1);
+}
+
+.card img{
+    width: 200px; /* 10px menos que el contenedor, asi queda lindo */
+    height: 300px; /* la altura de la imagen le ajusta la altura al contenedor */
+}
+
+.card h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 78px;
+    font-size: 20px;
+    padding: 10px;
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(7, 17, 161);
+}
+
+.card h2:hover {
+    color: rgb(255, 255, 255);
+}
+
