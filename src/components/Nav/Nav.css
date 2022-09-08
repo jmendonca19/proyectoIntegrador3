@@ -1,13 +1,14 @@
-
-
 .nav-bar{
     width: 35%;
+}
+
+.nav-item:hover{
+    color: #fff;
 }
 
 .nav-item {
     color: #aaa;
 }
-
 
 .listaNav {
     display: flex;

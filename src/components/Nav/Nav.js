@@ -6,14 +6,14 @@ export default function Navigator() {
   return (
         <nav className="nav-bar">
                 <ul className="listaNav">
-                    <li className="nav-item">
-                        <Link to="/"> Home </Link> 
+                    <li>
+                        <Link className="nav-item" to="/"> Home </Link> 
                     </li>
-                    <li className="nav-item">
-                        <Link to="/"> Favoritos </Link> 
+                    <li>
+                        <Link className="nav-item" to="/"> Favoritos </Link> 
                     </li>
-                    <li className="nav-item">
-                        <Link to="/"> Ver más </Link> 
+                    <li>
+                        <Link className="nav-item" to="/peliculas"> Peliculas </Link> 
                     </li>
                     
                 </ul>

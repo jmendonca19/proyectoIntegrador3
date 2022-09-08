@@ -14,8 +14,8 @@ export default function Header() {
                         <button type="submit"><i className="fas fa-search"></i></button>
                 </form>
             </div> 
-        </div>
         <Navigator/>
+        </div>
     </header>
     </>
   )
