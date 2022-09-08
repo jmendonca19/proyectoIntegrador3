@@ -16,10 +16,10 @@ export default function Header() {
 
             <nav className="nav-bar">
                 <ul className="listaNav">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#Series">Series</a></li>
-                    <li><a href="#Peliculas">Peliculas</a></li>
-                    <li><a href="favorite.html">Favoritos</a></li>
+                    <li><a>Home</a></li>
+                    <li><a>Series</a></li>
+                    <li><a>Peliculas</a></li>
+                    <li><a>Favoritos</a></li>
                 </ul>
             </nav>
         </div>
