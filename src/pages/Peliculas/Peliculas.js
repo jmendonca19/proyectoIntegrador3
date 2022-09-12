@@ -27,13 +27,14 @@ class Peliculas extends Component {
 
   render() {
     return (
-      <>
+      <div className='peliculas'>
+
       {
           this.state.peliculas.map(peliculas => (
               <Card key={peliculas.id} peliculas={peliculas}/>)
             )
       }
-      </>
+      </div>
     )
   }
 }

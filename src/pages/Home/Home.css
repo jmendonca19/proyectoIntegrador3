@@ -1,0 +1,9 @@
+.titleSection {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 35px;
+    font-size: 30px;
+    font-family: 'Permanent Marker', cursive;
+    margin-bottom: 25px;
+    color: #5f84f2;
+}
