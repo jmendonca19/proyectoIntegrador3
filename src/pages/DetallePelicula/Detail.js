@@ -10,7 +10,7 @@ class DetallePelicula extends Component {
     }
 
  componentDidMount(){
-        const url = "https://api.themoviedb.org/3/movie/popular/?api_key=924a6f16470b17afdd20524ec31c09be"
+        const url = "https://api.themoviedb.org/3/movie/${id}?api_key=924a6f16470b17afdd20524ec31c09be"
         fetch(url)
             .then((res)=> res.json())
             .then(datos =>{ 
