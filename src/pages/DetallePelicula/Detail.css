@@ -1,0 +1,89 @@
+.mainSeries{
+    display: flex;
+}
+
+.bannerSeries {
+    margin-left: 40px;
+    width: 30%;
+}
+
+.bannerSeries img{
+    width: auto;
+    height: 500px;
+}
+
+.descripcionSeries{
+    margin: 50px 50px 100px 50px;
+    background-color: rgba(255, 255, 255, 0.356);
+    width: 70%;
+}
+
+.descripcionArticulo{
+    display: flex;
+    flex-direction: column;  
+    color: aliceblue;
+    padding: 12px 0px;
+}
+
+.tituloArticulo{
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+.ulArticulo {
+    background-color: rgba(255, 255, 255, 0.26);
+}
+
+
+.ulArticulo li{
+    margin: 5px 0px 15px 50px;
+}
+
+
+.ulArticulo a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.ulArticulo a:hover{
+    color: black;
+}
+
+
+p{
+    padding: 0px 12px;
+}
+
+.direccionFavoritos{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.direccionFavoritos button{
+    border-radius:32px;
+    border: solid 2px rgb(0, 0, 0);
+    padding: 20px;
+    font-family: 'Permanent Marker', cursive;
+    background-color: rgba(255, 255, 255, 0.37);
+}
+
+.direccionFavoritos button:hover{
+    border: solid 2px rgb(255, 255, 255);
+}
+
+@media screen and (max-width: 800px) {
+    .mainSeries{
+        flex-direction: column;
+    }
+    img{
+        width: 300px !important;
+    }
+
+    .descripcionSeries{
+        width: 300px;
+        margin-left: 41px;
+        margin-bottom: 0px;
+    }
+}
