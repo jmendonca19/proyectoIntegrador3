@@ -30,8 +30,8 @@ class Peliculas extends Component {
       <div className='peliculas'>
 
       {
-          this.state.peliculas.map(peliculas => (
-              <Card key={peliculas.id} peliculas={peliculas}/>)
+          this.state.peliculas.map(pelicula => (
+              <Card key={pelicula.id} pelicula={pelicula}/>)
             )
       }
       </div>
