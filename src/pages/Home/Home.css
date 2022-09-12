@@ -1,0 +1,17 @@
+.titleSection {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 35px;
+    font-size: 30px;
+    font-family: 'Permanent Marker', cursive;
+    margin-bottom: 25px;
+    color: #5f84f2;
+}
+
+.banner{
+    min-height: 400px; /* altura minima, con px porque es estatico */
+    background-image: url(../../../public/backdrop.jpg);
+    background-size: cover;
+    background-position: center center; /* el primer 'center' refiere al eje horizontal y el segundo al vertical */
+    margin-bottom: 30px;
+}

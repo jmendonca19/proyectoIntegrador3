@@ -68,7 +68,7 @@ body {
     }
 
     .titleSection{
-        text-align: center;
+        text-align: center !important;
     }
 
 }

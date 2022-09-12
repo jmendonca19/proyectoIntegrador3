@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Card({peliculas}) {
+function Card({pelicula}) {
     const img = 'https://image.tmdb.org/t/p/w342'; /* Primer parte de la url de la imagen, se complementa con el poster_path */
 
-    let {poster_path, title} = peliculas
+    let {poster_path, title} = pelicula
 
   return (
     <> 
