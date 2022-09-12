@@ -37,8 +37,6 @@ class DetallePelicula extends Component {
             </>
         )
      }
-
 }
-
 
 export default DetallePelicula;

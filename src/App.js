@@ -17,6 +17,7 @@ function App() {
                 <Home/> 
             </Route> 
             <Route path="/peliculas" component={Peliculas}  />  
+            <Route path="/favoritos" component={Peliculas}  />  
             <Route path="/detallePelicula/id/:id" component={Detail} />
             <Route component={NotFound}/> 
         </Switch>
