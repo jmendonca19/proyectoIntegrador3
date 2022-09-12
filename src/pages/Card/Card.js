@@ -7,7 +7,7 @@ function Card({peliculas}) {
 
   return (
     <> 
-        <article class="card">
+        <article className="card">
             <img src={img + poster_path} alt={title} />
             <h2>{title}</h2>
         </article>
