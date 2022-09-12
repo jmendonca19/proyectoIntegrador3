@@ -45,7 +45,9 @@ import "./Home.css"
   render() {
    return (
     <>
-        <span class="titleSection">Peliculas mas Populares</span>
+        <section className="banner"></section>
+
+        <span className="titleSection">Peliculas mas Populares</span>
 
         <div className='peliculas'>
         { 
