@@ -5,7 +5,7 @@ class DetailSerie extends Component {
     constructor (){
         super();
         this.state = {
-            data: {}
+            datos: {}
         }
     }
 
