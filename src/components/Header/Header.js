@@ -2,6 +2,7 @@ import React from 'react'
 import Navigator from '../Nav/Nav'
 import "./Header.css"
 
+
 export default function Header() {
   return (
     <>
@@ -20,3 +21,4 @@ export default function Header() {
     </>
   )
 }
+
