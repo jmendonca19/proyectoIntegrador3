@@ -77,7 +77,6 @@ import "./Home.css"
     <div className='buscador'> 
     <form method="GET"> 
         <input  onChange={(e)=>{this.handleChange(e)}} type="search" name="buscar" placeholder="Buscador..." value={this.state.filterBy} />
-                <button type="submit"><i className="fas fa-search"></i></button>
      </form>
     </div>
      
