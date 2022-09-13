@@ -14,7 +14,7 @@ function Card(props) {
             <h2>{title}</h2>
             
             <button className="boton"><Link to={`/detallePelicula/id/${id}`} className="detalle">Detalle</Link></button>
-            <button className="boton" onClick={()=>{props.favorito(props.pelicula)}}>Favoritos</button>
+            <button className="boton" onClick={()=>{props.favorito(props.pelicula)}}>Agregar a favoritos</button>
         </article>
     </>
   )

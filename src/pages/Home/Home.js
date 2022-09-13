@@ -85,6 +85,7 @@ import "./Home.css"
         </div>
 
     <span class="titleSection">Peliculas mas Valoradas</span>
+    
         <div className='peliculas'>
         { 
             this.state.cargando === false ? (
