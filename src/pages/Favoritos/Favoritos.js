@@ -17,7 +17,7 @@ class Favoritos extends Component {
   render() {
       return (
         <>
-            <h2 className="tituloFavoritos">Tus Peliculas Favoritas</h2>
+            <h2 className="tituloFavoritos">Tus Peliculas Favoritass</h2>
             <div className='peliculas'>
                 { this.state.favoritos != 0 ? (
                     this.state.favoritos.map( pelicula => (
