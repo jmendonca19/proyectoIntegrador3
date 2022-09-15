@@ -43,12 +43,14 @@ class DetallePelicula extends Component {
 {/*                     <li class="generoPeli">{this.state.detalle.genres.name}</li>     */} 
                 </ul>
                 <p className="sinopsisPeli"> {this.state.detalle.overview} </p>
+                <a className="direccionFavoritos">
+                    <button>Añadir a favoritos</button>
+                </a>
             </article>
         </section>
             </div>
             )
             }
         }   
-
 
 export default DetallePelicula;

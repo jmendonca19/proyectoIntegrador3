@@ -6,7 +6,7 @@ import Peliculas from './pages/Peliculas/Peliculas';
 import Home from './pages/Home/Home';
 import Detail from "./pages/DetallePelicula/Detail"
 import NotFound from './components/NotFound/NotFound';
-
+import Favoritos from './pages/Favoritos/Favoritos';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
                 <Home/> 
             </Route> 
             <Route path="/peliculas" component={Peliculas}  />  
+            <Route path="/favoritos" component={Favoritos}  />  
             <Route path="/detallePelicula/id/:id" component={Detail} />
             <Route component={NotFound}/> 
         </Switch>
