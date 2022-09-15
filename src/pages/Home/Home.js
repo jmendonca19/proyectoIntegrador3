@@ -12,9 +12,7 @@ import "./Home.css"
             cargando: false,
             resultados: [],
             filterBy:'',
-            
             favoritos: [],
-            cargando: false
         };
     }
 
@@ -124,7 +122,7 @@ import "./Home.css"
         }
         </div>
 
-    <span class="titleSection">Peliculas mas Valoradas</span>
+    <span className="titleSection">Peliculas mas Valoradas</span>
     
         <div className='peliculas'>
         {
