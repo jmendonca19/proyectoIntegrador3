@@ -12,9 +12,8 @@ import "./Home.css"
             cargando: false,
             resultados: [],
             filterBy:'',
-            
             favoritos: [],
-            cargando: false
+            textFav: "",
         };
     }
 
@@ -77,16 +76,18 @@ import "./Home.css"
 
      handleFavoritos(card){
         if(this.state.favoritos.some(fav => card.id === fav.id)){
-        // texto agregar a favoritos
+        this.setState({textFav: "Agregar a favoritos"})
         this.setState({favoritos: this.state.favoritos.filter( item => item.id !== card.id)}, ()=>{
           localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
           // texto quitar de favoritos
+          this.setState({textFav: "Quitar de favoritos"})
         })
         console.log(this.state.favoritos.filter( item => item.id !== card.id))
         }else {
           this.setState({favoritos: [...this.state.favoritos, card]}, ()=>{
           localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
           // texto quitar de favoritos
+          this.setState({textFav: "Quitar de favoritos"})
         })}
       }
 
@@ -118,13 +119,14 @@ import "./Home.css"
                         key={pelicula.id} 
                         pelicula={pelicula}
                         favorito={(pelicula) => this.handleFavoritos(pelicula)}
+                        textFav={this.state.textFav}
                     />)
                 )
             )
         }
         </div>
 
-    <span class="titleSection">Peliculas mas Valoradas</span>
+    <span className="titleSection">Peliculas mas Valoradas</span>
     
         <div className='peliculas'>
         {
@@ -137,6 +139,7 @@ import "./Home.css"
                         key={pelisValoradas.id} 
                         pelicula={pelisValoradas}
                         favorito={(pelisValoradas) => this.handleFavoritos(pelisValoradas)}
+                        textFav={this.state.textFav}
                     />)
                 )
             )
