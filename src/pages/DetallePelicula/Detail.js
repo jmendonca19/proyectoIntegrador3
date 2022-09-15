@@ -40,7 +40,7 @@ class DetallePelicula extends Component {
                 <h2 className="tituloArticulo"> {this.state.detalle.title} </h2>
                 <ul className="ulArticulo">
                     <li className="calificacionPeli">Calificación: {this.state.detalle.vote_average} </li>
-                    <li className="duracionPeli">Duración: {this.state.detalle.runtime}  </li>
+                    <li className="duracionPeli">Duración: {this.state.detalle.runtime} minutos  </li>
                     <li className="estrenoPeli">Fecha de Estreno: {this.state.detalle.release_date}</li>
                     <li class="generoPeli">Genero: {this.state.genre}</li>     
                 </ul>
