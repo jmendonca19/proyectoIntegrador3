@@ -27,7 +27,8 @@ class DetallePelicula extends Component {
      
      render(){
          const img = 'https://image.tmdb.org/t/p/w342';
-        return(
+        
+         return(
             <div className='mainSeries'>
             <section className="bannerSeries">
                 <img src={img + this.state.detalle.poster_path} alt={this.state.detalle.title}/>
@@ -39,6 +40,7 @@ class DetallePelicula extends Component {
                     <li className="calificacionPeli">Calificación: {this.state.detalle.vote_average} </li>
                     <li className="duracionPeli">Duración: {this.state.detalle.runtime}  </li>
                     <li className="estrenoPeli">Fecha de Estreno: {this.state.detalle.release_date}</li>
+{/*                     <li class="generoPeli">{this.state.detalle.genres.name}</li>     */} 
                 </ul>
                 <p className="sinopsisPeli"> {this.state.detalle.overview} </p>
             </article>
