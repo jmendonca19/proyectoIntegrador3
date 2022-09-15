@@ -10,7 +10,7 @@ export default function Navigator() {
                         <Link className="nav-item" to="/"> Home </Link> 
                     </li>
                     <li>
-                        <Link className="nav-item" to="/"> Favoritos </Link> 
+                        <Link className="nav-item" to="/favoritos"> Favoritos </Link> 
                     </li>
                     <li>
                         <Link className="nav-item" to="/peliculas"> Peliculas </Link> 

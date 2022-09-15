@@ -7,6 +7,7 @@ class Peliculas extends Component {
         super();
         this.state = {
             peliculas: [],
+            favoritos: []
         };
     }
 
@@ -14,6 +15,9 @@ class Peliculas extends Component {
 
     componentDidMount(){
         const url = "https://api.themoviedb.org/3/movie/popular/?api_key=924a6f16470b17afdd20524ec31c09be"
+        
+        this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || []})
+
         fetch(url)
             .then((res)=> res.json())
             .then(datos =>{ 
@@ -24,14 +28,33 @@ class Peliculas extends Component {
             })
             .catch( err => console.log(err))
      }
-
+     
+     handleFavoritos(card){
+        if(this.state.favoritos.some(fav => card.id === fav.id)){
+        // texto agregar a favoritos
+        this.setState({favoritos: this.state.favoritos.filter( item => item.id !== card.id)}, ()=>{
+          localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
+          // texto quitar de favoritos
+        })
+        console.log(this.state.favoritos.filter( item => item.id !== card.id))
+        }else {
+          this.setState({favoritos: [...this.state.favoritos, card]}, ()=>{
+          localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
+          // texto quitar de favoritos
+        })}
+      }
+      
   render() {
     return (
       <div className='peliculas'>
 
       {
-          this.state.peliculas.map(peliculas => (
-              <Card key={peliculas.id} peliculas={peliculas}/>)
+          this.state.peliculas.map(pelicula => (
+                <Card 
+                    key={pelicula.id} 
+                    pelicula={pelicula}
+                    favorito={(pelicula) => this.handleFavoritos(pelicula)}
+                />)
             )
       }
       </div>

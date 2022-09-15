@@ -11,8 +11,10 @@ import "./Home.css"
             pelisValoradas: [],
             cargando: false,
             resultados: [],
-            filterBy:''
+            filterBy:'',
             
+            favoritos: [],
+            cargando: false
         };
     }
 
@@ -22,6 +24,9 @@ import "./Home.css"
         const url = "https://api.themoviedb.org/3/movie/popular/?api_key=924a6f16470b17afdd20524ec31c09be"
 
         const peliculasMasValoradas = 'https://api.themoviedb.org/3/movie/top_rated/?api_key=924a6f16470b17afdd20524ec31c09be'
+
+        console.log(this.state.favoritos) 
+        this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || []})
 
         fetch(url)
             .then((res)=> res.json())
@@ -70,6 +75,21 @@ import "./Home.css"
         })
        }
 
+     handleFavoritos(card){
+        if(this.state.favoritos.some(fav => card.id === fav.id)){
+        // texto agregar a favoritos
+        this.setState({favoritos: this.state.favoritos.filter( item => item.id !== card.id)}, ()=>{
+          localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
+          // texto quitar de favoritos
+        })
+        console.log(this.state.favoritos.filter( item => item.id !== card.id))
+        }else {
+          this.setState({favoritos: [...this.state.favoritos, card]}, ()=>{
+          localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
+          // texto quitar de favoritos
+        })}
+      }
+
   render() {
    return (
 
@@ -93,24 +113,33 @@ import "./Home.css"
             this.state.cargando === false ? (
                 <p>Cargando</p>
         ) : (
-            this.state.peliculas.map(pelicula => (
-            <Card key={pelicula.id} pelicula={pelicula}/>)
-        )
-    )
+                this.state.peliculas.map(pelicula => (
+                    <Card 
+                        key={pelicula.id} 
+                        pelicula={pelicula}
+                        favorito={(pelicula) => this.handleFavoritos(pelicula)}
+                    />)
+                )
+            )
         }
         </div>
 
-        <span className="titleSection">Peliculas mas Valoradas</span>
+    <span class="titleSection">Peliculas mas Valoradas</span>
+    
         <div className='peliculas'>
         {
         
             this.state.cargando === false ? (
             <p>Cargando</p>
         ) : (
-        this.state.pelisValoradas.map(pelisValoradas => (
-            <Card key={pelisValoradas.id} pelicula={pelisValoradas}/>)
-        )
-    )
+                this.state.pelisValoradas.map(pelisValoradas => (
+                    <Card 
+                        key={pelisValoradas.id} 
+                        pelicula={pelisValoradas}
+                        favorito={(pelisValoradas) => this.handleFavoritos(pelisValoradas)}
+                    />)
+                )
+            )
         }
         </div>
     </>
