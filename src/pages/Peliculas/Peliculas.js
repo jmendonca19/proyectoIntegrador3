@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from '../Card/Card';
+import "./Peliculas.css"
 
 class Peliculas extends Component {
 
@@ -7,14 +8,16 @@ class Peliculas extends Component {
         super();
         this.state = {
             peliculas: [],
-            favoritos: []
+            favoritos: [],
+            pageurl: "",
+            
         };
     }
 
     img = 'https://image.tmdb.org/t/p/w342'; /* Primer parte de la url de la imagen, se complementa con el poster_path */
 
     componentDidMount(){
-        const url = "https://api.themoviedb.org/3/movie/popular/?api_key=924a6f16470b17afdd20524ec31c09be"
+        const url = `https://api.themoviedb.org/3/movie/popular/?api_key=924a6f16470b17afdd20524ec31c09be&page=1`
         
         this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || []})
 
@@ -23,10 +26,15 @@ class Peliculas extends Component {
             .then(datos =>{ 
                     console.log(datos)
                     return this.setState({
-                    peliculas: datos.results
+                    peliculas: datos.results,
+                    pageurl: `https://api.themoviedb.org/3/movie/popular/?api_key=924a6f16470b17afdd20524ec31c09be&page=2`
                 })
             })
             .catch( err => console.log(err))
+
+          
+
+
      }
      
      handleFavoritos(card){
@@ -43,7 +51,23 @@ class Peliculas extends Component {
           // texto quitar de favoritos
         })}
       }
-      
+    
+  masPeliculas(){
+    const url = this.state.pageurl
+    
+   
+    fetch(url)
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data)
+        this.setState({
+          pageurl: `https://api.themoviedb.org/3/movie/popular/?api_key=924a6f16470b17afdd20524ec31c09be&page=3`,
+          peliculas: this.state.peliculas.concat(data.results)
+        })
+        .catch( err => console.log(err))
+      })
+  } 
+  
   render() {
     return (
       <div className='peliculas'>
@@ -57,6 +81,7 @@ class Peliculas extends Component {
                 />)
             )
       }
+      <button class="boton" onClick={()=>this.masPeliculas()}> ver más peliculas  </button>
       </div>
     )
   }

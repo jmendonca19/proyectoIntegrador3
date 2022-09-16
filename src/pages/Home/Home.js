@@ -59,7 +59,7 @@ import "./Home.css"
         fetch(url)
             .then((res)=> res.json())
             .then(datos =>{ 
-                console.log(datos)
+                /* console.log(datos) */
                 return this.setState({
                 resultados: datos.results,
             })
@@ -67,12 +67,18 @@ import "./Home.css"
         .catch( err => console.log(err))}
     }
     handleChange(e){
+        
         this.setState({
           filterBy: e.target.value
         },()=>{
           this.PeliculasFiltradas(this.state.filterBy)
         })
+       
        }
+
+    handleSubmit(e){
+        e.preventDefault()
+    }
 
      handleFavoritos(card){
         if(this.state.favoritos.some(fav => card.id === fav.id)){
@@ -96,8 +102,9 @@ import "./Home.css"
 
     <>
     <div className='buscador'> 
-    <form method="GET"> 
+    <form method="GET" onSubmit={(e)=>this.handleSubmit(e)}> 
         <input  onChange={(e)=>{this.handleChange(e)}} type="search" name="buscar" placeholder="Buscador..." value={this.state.filterBy} />
+        <button type="submit" className="fas fa-search"/>
      </form>
     </div>
      
