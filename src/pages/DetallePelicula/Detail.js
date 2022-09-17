@@ -8,6 +8,7 @@ class DetallePelicula extends Component {
         this.state = {
             id: this.props.match.params.id,
             detalle: {},
+            genre: "",
         }
     }
 
@@ -18,7 +19,8 @@ class DetallePelicula extends Component {
             .then(datos =>{ 
                 console.log(datos)
                     return this.setState({
-                    detalle: datos
+                    detalle: datos,
+                    genre: datos.genres[0].name
                 })
             })
             .catch( err => console.log(err))
@@ -38,9 +40,9 @@ class DetallePelicula extends Component {
                 <h2 className="tituloArticulo"> {this.state.detalle.title} </h2>
                 <ul className="ulArticulo">
                     <li className="calificacionPeli">Calificación: {this.state.detalle.vote_average} </li>
-                    <li className="duracionPeli">Duración: {this.state.detalle.runtime}  </li>
+                    <li className="duracionPeli">Duración: {this.state.detalle.runtime} minutos  </li>
                     <li className="estrenoPeli">Fecha de Estreno: {this.state.detalle.release_date}</li>
-{/*                     <li class="generoPeli">{this.state.detalle.genres.name}</li>     */} 
+                    <li class="generoPeli">Genero: {this.state.genre}</li>     
                 </ul>
                 <p className="sinopsisPeli"> {this.state.detalle.overview} </p>
                 <a className="direccionFavoritos">

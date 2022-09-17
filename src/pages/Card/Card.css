@@ -4,6 +4,7 @@
     background: #111;
     cursor: pointer;
     border-radius: 10px;
+    font-family: 'Permanent Marker', cursive;
 }
 
 .boton:hover {
