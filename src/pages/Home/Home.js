@@ -3,9 +3,8 @@ import Card from '../Card/Card'
 import "./Home.css"
 
  class Home extends Component {
-
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             peliculas: [],
             pelisValoradas: [],
@@ -13,7 +12,7 @@ import "./Home.css"
             resultados: [],
             filterBy:'',
             favoritos: [],
-            textFav: "",
+            textFav: ""
         };
     }
 
@@ -24,8 +23,13 @@ import "./Home.css"
 
         const peliculasMasValoradas = 'https://api.themoviedb.org/3/movie/top_rated/?api_key=924a6f16470b17afdd20524ec31c09be'
 
-        console.log(this.state.favoritos) 
         this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || []})
+        console.log(this.state.favoritos) 
+        if(this.state.favoritos.some(fav => this.props.pelicula.id !== fav.id)){
+            this.setState({textFav: "Quitar1 de favoritos"})
+           } else {
+            this.setState({textFav: "Agregar1 a favoritos"})
+           }
 
         fetch(url)
             .then((res)=> res.json())
@@ -66,6 +70,7 @@ import "./Home.css"
         })
         .catch( err => console.log(err))}
     }
+
     handleChange(e){
         this.setState({
           filterBy: e.target.value
@@ -76,24 +81,20 @@ import "./Home.css"
 
      handleFavoritos(card){
         if(this.state.favoritos.some(fav => card.id === fav.id)){
-        this.setState({textFav: "Agregar a favoritos"})
         this.setState({favoritos: this.state.favoritos.filter( item => item.id !== card.id)}, ()=>{
           localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
-          // texto quitar de favoritos
-          this.setState({textFav: "Quitar de favoritos"})
+          // texto agregar de favoritos
         })
         console.log(this.state.favoritos.filter( item => item.id !== card.id))
         }else {
           this.setState({favoritos: [...this.state.favoritos, card]}, ()=>{
           localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
           // texto quitar de favoritos
-          this.setState({textFav: "Quitar de favoritos"})
         })}
       }
 
   render() {
    return (
-
     <>
     <div className='buscador'> 
     <form method="GET"> 
@@ -101,8 +102,6 @@ import "./Home.css"
      </form>
     </div>
      
-   
-    
     {this.state.filterBy === "" ?
     <>
      <section className="banner"></section>
@@ -154,7 +153,14 @@ import "./Home.css"
     ) : 
     (
             this.state.resultados.map(resultado => (
-                <Card key={resultado.id} pelicula={resultado}/>)
+                <Card 
+                    key={resultado.id} 
+                    pelicula={resultado}
+                    favorito={(pelisValoradas) => this.handleFavoritos(pelisValoradas)}
+                    textFav={this.state.textFav}
+                />
+                    
+                )
             )
         )
     }

@@ -5,7 +5,7 @@ class Favoritos extends Component {
     constructor(){
         super()
         this.state={
-            favoritos:[]
+            favoritos:[],
         }
     }
 
@@ -24,6 +24,8 @@ class Favoritos extends Component {
                         <Card 
                             key={pelicula.id} 
                             pelicula={pelicula}
+                            favorito={(pelicula) => this.handleFavoritos(pelicula)}
+                            textFav={this.props.textFav}
                         />
                     ))) : (
                         <h2 className="tituloFavoritos">No tenes peliculas favoritas seleccionadas</h2>

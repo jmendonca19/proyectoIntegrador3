@@ -53,7 +53,8 @@ class Peliculas extends Component {
                 <Card 
                     key={pelicula.id} 
                     pelicula={pelicula}
-                    favorito={(pelicula) => this.handleFavoritos(pelicula)}
+                    favorito={(pelisValoradas) => this.handleFavoritos(pelisValoradas)}
+                    textFav={this.state.textFav}
                 />)
             )
       }
