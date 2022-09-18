@@ -80,11 +80,12 @@ class Peliculas extends Component {
                 <Card 
                     key={pelicula.id} 
                     pelicula={pelicula}
-                    favorito={(pelicula) => this.handleFavoritos(pelicula)}
+                    favorito={(pelisValoradas) => this.handleFavoritos(pelisValoradas)}
+                    textFav={this.state.textFav}
                 />)
             )
       }
-      <button class="boton" onClick={()=>this.masPeliculas()}> ver más peliculas  </button>
+      <button class="boton" onClick={()=>this.masPeliculas()}> Ver más peliculas  </button>
       </div>
     )
   }

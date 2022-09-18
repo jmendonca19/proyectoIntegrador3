@@ -4,7 +4,6 @@
     background: #111;
     cursor: pointer;
     border-radius: 10px;
-    margin-top: 10px;
     font-family: 'Permanent Marker', cursive;
 }
 
@@ -17,3 +16,20 @@
     color: blanchedalmond;
 }
 
+.show{
+    display: block;
+    color: rgb(252, 252, 252);
+}
+.hide{
+    display: none;
+}
+
+.more{
+    color: #AB20FD;
+    margin-top: 5px;
+}
+
+.more:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

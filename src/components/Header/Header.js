@@ -8,7 +8,7 @@ export default function Header() {
     <>
     <header className="header">
         <div className="contenedor">
-            <Link to="/">  <h2 className="logotipo">pelisYa</h2> </Link> 
+            <Link to="/"><h2 className="logotipo">pelisYa</h2> </Link> 
         <Navigator/>
         </div>
     </header>
