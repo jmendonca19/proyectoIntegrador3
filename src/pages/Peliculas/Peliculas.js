@@ -31,10 +31,6 @@ class Peliculas extends Component {
                 })
             })
             .catch( err => console.log(err))
-
-          
-
-
      }
      
      handleFavoritos(card){
@@ -82,7 +78,7 @@ class Peliculas extends Component {
                 />)
             )
       }
-      <button class="boton" onClick={()=>this.masPeliculas()}> ver más peliculas  </button>
+      <button class="boton" onClick={()=>this.masPeliculas()}> Ver más peliculas  </button>
       </div>
     )
   }

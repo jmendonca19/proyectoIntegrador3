@@ -19,17 +19,15 @@ import "./Home.css"
     img = 'https://image.tmdb.org/t/p/w342'; /* Primer parte de la url de la imagen, se complementa con el poster_path */
 
     componentDidMount(){
+        if (localStorage.length > 0) {
+            this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || ['']})
+        }else{
+            localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))            
+        }
+
         const url = "https://api.themoviedb.org/3/movie/popular/?api_key=924a6f16470b17afdd20524ec31c09be"
 
         const peliculasMasValoradas = 'https://api.themoviedb.org/3/movie/top_rated/?api_key=924a6f16470b17afdd20524ec31c09be'
-
-        this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos')) || []})
-        console.log(this.state.favoritos) 
-        if(this.state.favoritos.some(fav => this.props.pelicula.id !== fav.id)){
-            this.setState({textFav: "Quitar1 de favoritos"})
-           } else {
-            this.setState({textFav: "Agregar1 a favoritos"})
-           }
 
         fetch(url)
             .then((res)=> res.json())
@@ -89,90 +87,96 @@ import "./Home.css"
         if(this.state.favoritos.some(fav => card.id === fav.id)){
         this.setState({favoritos: this.state.favoritos.filter( item => item.id !== card.id)}, ()=>{
           localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
-          // texto agregar de favoritos
         })
         console.log(this.state.favoritos.filter( item => item.id !== card.id))
         }else {
           this.setState({favoritos: [...this.state.favoritos, card]}, ()=>{
           localStorage.setItem('favoritos', JSON.stringify(this.state.favoritos))
-          // texto quitar de favoritos
         })}
       }
 
   render() {
    return (
     <>
-    <div className='buscador'> 
-    <form method="GET" onSubmit={(e)=>this.handleSubmit(e)}> 
-        <input  onChange={(e)=>{this.handleChange(e)}} type="search" name="buscar" placeholder="Buscador..." value={this.state.filterBy} />
-        <button type="submit" className="fas fa-search"/>
-     </form>
-    </div>
-     
-    {this.state.filterBy === "" ?
-    <>
-     <section className="banner"></section>
+        {this.state.filterBy === "" ?
+            <React.Fragment>
+            <section className="banner"></section>
 
-        <span className="titleSection">Peliculas mas Populares</span>
+            <div className='buscador'> 
+                <form method="GET" onSubmit={(e)=>this.handleSubmit(e)}> 
+                    <input onChange={(e)=>{this.handleChange(e)}} type="search" name="buscar" placeholder="Buscar peliculas y series..." value={this.state.filterBy} />
+                    <button type="submit" className="fas fa-search"/>
+                </form>
+            </div>
 
-        <div className='peliculas'>
-        { 
-            this.state.cargando === false ? (
-                <p>Cargando</p>
-        ) : (
-                this.state.peliculas.map(pelicula => (
-                    <Card 
-                        key={pelicula.id} 
-                        pelicula={pelicula}
-                        favorito={(pelicula) => this.handleFavoritos(pelicula)}
-                        textFav={this.state.textFav}
-                    />)
-                )
-            )
+                <span className="titleSection">Peliculas mas Populares</span>
+
+                <div className='peliculas'>
+                { 
+                    this.state.cargando === false ? (
+                        <img src="../../../public/loader.gif" className="loader" alt=''/>
+                ) : (
+                        this.state.peliculas.map(pelicula => (
+                            <Card 
+                                key={pelicula.id} 
+                                pelicula={pelicula}
+                                favorito={(fav) => this.handleFavoritos(fav)}
+                            />)
+                        )
+                    )
+                }
+                </div>
+
+            <span className="titleSection">Peliculas mas Valoradas</span>
+            
+                <div className='peliculas'>
+                {
+                
+                    this.state.cargando === false ? (
+                        <img src="../../../public/loader.gif" className="loader" alt=''/>
+                ) : (
+                        this.state.pelisValoradas.map(pelisValoradas => (
+                            <Card 
+                                key={pelisValoradas.id} 
+                                pelicula={pelisValoradas}
+                                favorito={(fav) => this.handleFavoritos(fav)}
+                            />)
+                        )
+                    )
+                }
+                </div>
+            </React.Fragment>
+            : 
+            <React.Fragment>
+                <section className="banner"></section>
+                <div className='buscador'> 
+                    <form method="GET" onSubmit={(e)=>this.handleSubmit(e)}> 
+                        <input onChange={(e)=>{this.handleChange(e)}} type="search" name="buscar" placeholder="Buscar peliculas y series..." value={this.state.filterBy} />
+                        <button type="submit" className="fas fa-search"/>
+                    </form>
+                </div>
+
+                <div className='peliculas'>
+                { 
+                    this.state.cargando === false ? (
+                        <img src="../../../public/loader.gif" className="loader" alt=''/>
+                ) : 
+                (
+                        this.state.resultados.map(resultado => (
+                            <Card 
+                                key={resultado.id} 
+                                pelicula={resultado}
+                                favorito={(fav) => this.handleFavoritos(fav)}
+                            />
+                                
+                            )
+                        )
+                    )
+                }
+                </div>
+            </React.Fragment>
         }
-        </div>
-
-    <span className="titleSection">Peliculas mas Valoradas</span>
-    
-        <div className='peliculas'>
-        {
-        
-            this.state.cargando === false ? (
-            <p>Cargando</p>
-        ) : (
-                this.state.pelisValoradas.map(pelisValoradas => (
-                    <Card 
-                        key={pelisValoradas.id} 
-                        pelicula={pelisValoradas}
-                        favorito={(pelisValoradas) => this.handleFavoritos(pelisValoradas)}
-                        textFav={this.state.textFav}
-                    />)
-                )
-            )
-        }
-        </div>
     </>
-    : 
-    <>
-    { 
-        this.state.cargando === false ? (
-        <p>Cargando</p>
-    ) : 
-    (
-            this.state.resultados.map(resultado => (
-                <Card 
-                    key={resultado.id} 
-                    pelicula={resultado}
-                    favorito={(pelisValoradas) => this.handleFavoritos(pelisValoradas)}
-                    textFav={this.state.textFav}
-                />
-                    
-                )
-            )
-        )
-    }
-</>}
-</>
   )
  }
 }

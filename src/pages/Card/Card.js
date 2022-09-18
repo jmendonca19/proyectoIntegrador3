@@ -2,23 +2,22 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import "./Card.css"
 class Card extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
+            boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.props.pelicula.id),
             favoritos: [],
             claseDescripcion: 'hide',
             textoDescripcion: 'Ver descripcion',
         }
     }
 
-    /* componentDidMount(){
-       this.setState({favoritos: JSON.parse(localStorage.getItem('favoritos'))})
-       if(this.state.favoritos.some(fav => this.props.pelicula.id === fav.id)){
-        this.setState({textFav: "Quitar de favoritos"})
-       } else {
-        this.setState({textFav: "Agregar a favoritos"})
-       }
-    } */
+    handleButton(){
+        this.setState({
+            boton: !this.state.boton
+        }, ()=>{this.props.favorito(this.props.pelicula)
+        })
+    }
 
     verDescripcion(){
         /* Hacemos la funcion de ver la descripcion. Nos preguntamos si en el estado esta oculto y dependiendo de eso la mostramos y alteramos el estado */
@@ -45,7 +44,7 @@ class Card extends Component {
                 <h2>{title}</h2>
                 </Link>
 
-                <button className="boton" onClick={()=>{this.props.favorito(this.props.pelicula)}}>{this.props.textFav}</button>
+                <button className="boton" onClick={()=> this.handleButton()}>{this.state.boton === true ? "Quitar de Favoritos" : "Agregar a Favoritos"}</button>
                 
                 <p onClick={() => this.verDescripcion()} className='more'> {this.state.textoDescripcion} </p>
 

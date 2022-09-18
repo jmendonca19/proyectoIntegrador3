@@ -20,8 +20,6 @@
 .buscador{
     display: flex;
     justify-content: center;
-    width: 50%;
-    flex-direction: column;
 }
 
 .buscador input{
@@ -54,3 +52,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.loader {
+    width: 20%;
+  }
