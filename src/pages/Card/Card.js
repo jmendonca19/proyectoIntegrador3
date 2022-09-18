@@ -5,6 +5,7 @@ class Card extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            /* hacemos un estado que nos devuelve true o false, donde preguntamos si en el localStorage tiene la pelicula seleccionada*/
             boton: JSON.parse(localStorage.getItem('favoritos')).some((fav)=> fav.id === this.props.pelicula.id),
             favoritos: [],
             claseDescripcion: 'hide',
@@ -14,8 +15,11 @@ class Card extends Component {
 
     handleButton(){
         this.setState({
+            /* cuando el usuario clickea en agregar a fav, cambia el estado de true a false y viceversa */
             boton: !this.state.boton
-        }, ()=>{this.props.favorito(this.props.pelicula)
+        }, 
+        /* luego en el callback, se ejecuta la funcion que se le pasa como parametro a card, es decir, la funcion que se encuentra en home y en favoritos (handleFavoritos) y como parametro se le pasa la pelicula */
+        ()=>{this.props.favorito(this.props.pelicula)
         })
     }
 
