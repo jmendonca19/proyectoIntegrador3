@@ -25,12 +25,19 @@ class Peliculas extends Component {
             .then((res)=> res.json())
             .then(datos =>{ 
                     console.log(datos)
-                    return this.setState({
+                    this.setState({
                     peliculas: datos.results,
                     pageurl: `https://api.themoviedb.org/3/movie/popular/?api_key=924a6f16470b17afdd20524ec31c09be&page=2`
                 })
+              })
+            .catch(err => {
+              return console.log(err);
             })
-            .catch( err => console.log(err))
+         
+
+          
+
+
      }
      
      handleFavoritos(card){
